@@ -75,7 +75,7 @@ data_short_wet$year.n <- paste(data_short_wet$year,"\n(n=",data_short_wet$total_
 # Plot long wet seasons, by year
 plot_long_wet <- ggplot(data = data_long_wet) +
   geom_bar(aes(x = year.n, y = value, fill = variable), stat = 'identity', position = 'dodge') +
-  labs(x = 'Year of study', y = expression(paste(italic('Masika'),' prevalence')), fill = NULL) + 
+  labs(x = 'Year of study', y = 'Long wet season prevalence', fill = NULL) + 
   scale_fill_manual(values = c('grey50', '#D95F02'), labels = c('*Pf-Po* co-infection', '*Po* mono-infection')) +
   theme_bw(base_size = 14) +
   theme(legend.position = "inside",
@@ -91,7 +91,7 @@ plot_long_wet <- ggplot(data = data_long_wet) +
 # Plot short wet seasons, by year
 plot_short_wet <- ggplot(data = data_short_wet) +
   geom_bar(aes(x = year.n, y = value, fill = variable), stat = 'identity', position = 'dodge') +
-  labs(x = 'Year of study', y = expression(paste(italic('Vuli'),' prevalence')), fill = NULL) + 
+  labs(x = 'Year of study', y =  'Short wet season prevalence', fill = NULL) + 
   scale_fill_manual(values = c('grey50', '#D95F02'), labels = c('*Po-Pf* co-infection', '*Po* mono-infection')) +
   theme_bw(base_size = 14) +
   theme(legend.position = "inside",
@@ -121,11 +121,9 @@ plot_ratio <- ggplot(data = data_monthly, aes(x = season, y = po_ratio)) +
   labs(x = 'Season', y = "*Po* mono-infection to *Po*-*Pf* co-infection ratio") +
   theme_bw(base_size = 16) +
   geom_hline(yintercept = 1, linetype = "dashed", color = "grey50") +
-  scale_x_discrete(label=c("Short Wet" = "*Vuli* rains", "Long Wet" = "*Masika* rains")) +
+  scale_x_discrete(label=c("Short Wet" = "Short wet", "Long Wet" = "Long wet")) +
   scale_y_log10(breaks = c(0,1,2,4,8,16,32)) +
   #coord_flip() +
   theme(axis.title = element_markdown(size = 16), axis.text.y = element_markdown(size=16), axis.text.x= element_markdown(size=16))
 ggsave('Figures/po_mono_coinfection_ratio.png', plot_ratio, height = 5.5, width = 4, dpi = 600)
-library(devtools)
-devtools::install_github("kkeenan02/MsatAllele")
-library(MsatAllele)
+

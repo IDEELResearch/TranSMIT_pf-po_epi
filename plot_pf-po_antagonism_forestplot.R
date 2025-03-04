@@ -45,17 +45,17 @@ data <- read.csv("TranSMIT_PfPo_PR.csv", header = FALSE)
 #assign names to variables in table
 #ID is given to each observation and is used for ordering and assigning colors in plot; is arbitrary
 colnames(data) <- c("season","ID","point","lci","uci","p-value")
-for (n in 1:length(data)){
-  if (data$season[n] == "Long wet season"){
-    data$season.name[n] <- "*Masika* rains"
-  } else if (data$season[n] == "Short wet season"){
-    data$season.name[n] <- "*Vuli* rains"
-  } else if (data$season[n] == "Dry season") {
-    data$season.name[n] <- "Dry season"
-  } else {
-    data$season.name[n] <- "Overall"
-  }
-}
+#for (n in 1:length(data)){
+#  if (data$season[n] == "Long wet season"){
+#    data$season.name[n] <- "*Masika* rains"
+#  } else if (data$season[n] == "Short wet season"){
+#    data$season.name[n] <- "*Vuli* rains"
+#  } else if (data$season[n] == "Dry season") {
+#    data$season.name[n] <- "Dry season"
+#  } else {
+#    data$season.name[n] <- "Overall"
+#  }
+#}
 
 #generate text expression with italicized portions for use in graphing
 #first phrase places arrows showing the significances of prevalence ratios on either side of the null
@@ -78,7 +78,7 @@ pfpo_plot <- ggplot(data, aes(x=ID, y=point)) +
   #change theme to black-white
   theme_bw() + 
   #determine x-axis breaks
-  scale_x_continuous(breaks=data$ID, labels=data$season.name, trans = "reverse") + 
+  scale_x_continuous(breaks=data$ID, labels=data$season, trans = "reverse") + 
   #determine y axis breaks
   scale_y_log10(breaks = c(0.13, 0.25, 0.5, 1, 2, 4, 8), lim = c(0.12,8.1)) +
   #adjust labels, font sizes
@@ -91,7 +91,7 @@ pfpo_plot <- ggplot(data, aes(x=ID, y=point)) +
 #print plot
 pfpo_plot
 #save plot to png file in figures directory (within working directory)
-ggsave("Figures/pfpo_antagonism.png", plot = pfpo_plot, device = "png", dpi = 600, width = 6.5, height = 5)
+ggsave("Figures/pfpo_antagonism.png", plot = pfpo_plot, device = "png", dpi = 600, width = 6.75, height = 5)
 
 
 
