@@ -76,7 +76,7 @@ data_short_wet$year.n <- paste(data_short_wet$year,"\n(n=",data_short_wet$total_
 plot_long_wet <- ggplot(data = data_long_wet) +
   geom_bar(aes(x = year.n, y = value, fill = variable), stat = 'identity', position = 'dodge') +
   labs(x = 'Year of study', y = 'Long wet season prevalence', fill = NULL) + 
-  scale_fill_manual(values = c('grey50', '#D95F02'), labels = c('*Pf-Po* co-infection', '*Po* mono-infection')) +
+  scale_fill_manual(values = c('grey70', 'black'), labels = c('*Pf-Po* co-infection', '*Po* mono-infection')) +
   theme_bw(base_size = 14) +
   theme(legend.position = "inside",
         legend.position.inside = c(0.7,0.8),
@@ -92,7 +92,7 @@ plot_long_wet <- ggplot(data = data_long_wet) +
 plot_short_wet <- ggplot(data = data_short_wet) +
   geom_bar(aes(x = year.n, y = value, fill = variable), stat = 'identity', position = 'dodge') +
   labs(x = 'Year of study', y =  'Short wet season prevalence', fill = NULL) + 
-  scale_fill_manual(values = c('grey50', '#D95F02'), labels = c('*Po-Pf* co-infection', '*Po* mono-infection')) +
+  scale_fill_manual(values = c('grey70', 'black'), labels = c('*Po-Pf* co-infection', '*Po* mono-infection')) +
   theme_bw(base_size = 14) +
   theme(legend.position = "inside",
         legend.position.inside = c(0.7,0.8),
